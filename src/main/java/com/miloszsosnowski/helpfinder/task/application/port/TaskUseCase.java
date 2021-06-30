@@ -13,6 +13,8 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
+import static java.util.Collections.emptyList;
+
 public interface TaskUseCase {
 
     List<Task> findAll();
@@ -23,7 +25,7 @@ public interface TaskUseCase {
 
     List<Task> findByCity(String city);
 
-    Task addTask(CreateTaskCommand command);
+    void addTask(CreateTaskCommand command);
 
     UpdateTaskResponse updateTask(UpdateTaskCommand command);
 
@@ -53,20 +55,20 @@ public interface TaskUseCase {
         BigDecimal price;
         TaskStatus taskStatus;
 
-        public Task updateFields(Task task){
-            if(description != null){
+        public Task updateFields(Task task) {
+            if (description != null) {
                 task.setDescription(description);
             }
-            if(author != null){
+            if (author != null) {
                 task.setAuthor(author);
             }
-            if(address != null){
+            if (address != null) {
                 task.setAddress(address);
             }
-            if(price != null){
+            if (price != null) {
                 task.setPrice(price);
             }
-            if(taskStatus != null){
+            if (taskStatus != null) {
                 task.setTaskStatus(taskStatus);
             }
             return task;
@@ -75,6 +77,9 @@ public interface TaskUseCase {
 
     @Value
     class UpdateTaskResponse {
+        public static UpdateTaskResponse SUCCESS = new UpdateTaskResponse(true, emptyList());
 
+        boolean success;
+        List<String> errors;
     }
 }
