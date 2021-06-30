@@ -1,9 +1,9 @@
 package com.miloszsosnowski.helpfinder.task.application;
 
 import com.miloszsosnowski.helpfinder.task.application.port.TaskUseCase;
-import com.miloszsosnowski.helpfinder.task.db.TaskJpaRepository;
 import com.miloszsosnowski.helpfinder.task.domain.Task;
 import com.miloszsosnowski.helpfinder.task.domain.User;
+import com.miloszsosnowski.helpfinder.task.infrastructure.MemoryTaskRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.Optional;
 @Service
 public class TaskService implements TaskUseCase {
 
-    TaskJpaRepository repository;
+    MemoryTaskRepository repository;
 
     @Override
     public List<Task> findAll() {
