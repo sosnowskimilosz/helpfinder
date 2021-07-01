@@ -17,15 +17,14 @@ public class Task {
     private transient User author;
     private transient Address address;
     private BigDecimal price;
-    private TaskStatus taskStatus;
+    private TaskStatus taskStatus = TaskStatus.SUBMITTED;
     private LocalDateTime dateOfCreated;
     private LocalDateTime dateOfLastEdition;
 
-    public Task(String description, User author, Address address, BigDecimal price, TaskStatus taskStatus) {
+    public Task(String description, User author, Address address, BigDecimal price) {
         this.description = description;
         this.author = author;
         this.address = address;
         this.price = price;
-        this.taskStatus = taskStatus;
     }
 }

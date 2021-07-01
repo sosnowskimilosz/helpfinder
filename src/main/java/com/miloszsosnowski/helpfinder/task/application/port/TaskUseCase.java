@@ -21,7 +21,7 @@ public interface TaskUseCase {
 
     Optional<Task> findById(Long id);
 
-    List<Task> findByAuthor(User author);
+    List<Task> findByAuthor(String author);
 
     List<Task> findByCity(String city);
 
@@ -37,16 +37,14 @@ public interface TaskUseCase {
         User author;
         Address address;
         BigDecimal price;
-        TaskStatus taskStatus;
 
         public Task toTask() {
-            return new Task(description, author, address, price, taskStatus);
+            return new Task(description, author, address, price);
         }
     }
 
     @Value
     @Builder
-    @AllArgsConstructor
     class UpdateTaskCommand {
         Long id;
         String description;
