@@ -1,10 +1,7 @@
 package com.miloszsosnowski.helpfinder.task.application.port;
 
-import com.miloszsosnowski.helpfinder.task.domain.Address;
 import com.miloszsosnowski.helpfinder.task.domain.Task;
 import com.miloszsosnowski.helpfinder.task.domain.TaskStatus;
-import com.miloszsosnowski.helpfinder.task.domain.User;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
 
@@ -21,9 +18,7 @@ public interface TaskUseCase {
 
     Optional<Task> findById(Long id);
 
-    List<Task> findByAuthor(String author);
-
-    List<Task> findByCity(String city);
+    List<Task> findByAuthor(Long author);
 
     void addTask(CreateTaskCommand command);
 
@@ -34,12 +29,12 @@ public interface TaskUseCase {
     @Value
     class CreateTaskCommand {
         String description;
-        User author;
-        Address address;
+        Long userId;
+        Long addressId;
         BigDecimal price;
 
         public Task toTask() {
-            return new Task(description, author, address, price);
+            return new Task(description, userId, addressId, price);
         }
     }
 
@@ -48,8 +43,8 @@ public interface TaskUseCase {
     class UpdateTaskCommand {
         Long id;
         String description;
-        User author;
-        Address address;
+        Long userId;
+        Long addressId;
         BigDecimal price;
         TaskStatus taskStatus;
 
@@ -57,11 +52,11 @@ public interface TaskUseCase {
             if (description != null) {
                 task.setDescription(description);
             }
-            if (author != null) {
-                task.setAuthor(author);
+            if (userId != null) {
+                task.setUserId(userId);
             }
-            if (address != null) {
-                task.setAddress(address);
+            if (addressId != null) {
+                task.setAddressId(addressId);
             }
             if (price != null) {
                 task.setPrice(price);

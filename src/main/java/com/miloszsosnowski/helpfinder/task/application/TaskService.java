@@ -2,7 +2,6 @@ package com.miloszsosnowski.helpfinder.task.application;
 
 import com.miloszsosnowski.helpfinder.task.application.port.TaskUseCase;
 import com.miloszsosnowski.helpfinder.task.domain.Task;
-import com.miloszsosnowski.helpfinder.task.domain.User;
 import com.miloszsosnowski.helpfinder.task.infrastructure.MemoryTaskRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,18 +28,10 @@ public class TaskService implements TaskUseCase {
     }
 
     @Override
-    public List<Task> findByAuthor(String author) {
+    public List<Task> findByAuthor(Long userId) {
         return repository.findAll()
                 .stream()
-                .filter(task -> task.getAuthor().getEmail().equals(author))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Task> findByCity(String city) {
-        return repository.findAll()
-                .stream()
-                .filter(task -> task.getAddress().getCity().startsWith(city))
+                .filter(task -> task.getUserId().equals(userId))
                 .collect(Collectors.toList());
     }
 
@@ -58,7 +49,7 @@ public class TaskService implements TaskUseCase {
                     Task updatedTask = command.updateFields(task);
                     repository.save(updatedTask);
                     return UpdateTaskResponse.SUCCESS;
-                }).orElseGet(()-> new UpdateTaskResponse(false, Collections.singletonList("Task not found with id: " + command.getId())));
+                }).orElseGet(() -> new UpdateTaskResponse(false, Collections.singletonList("Task not found with id: " + command.getId())));
     }
 
     @Override

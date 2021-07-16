@@ -1,7 +1,7 @@
-package com.miloszsosnowski.helpfinder.task.web;
+package com.miloszsosnowski.helpfinder.address.web;
 
-import com.miloszsosnowski.helpfinder.task.application.port.TaskUseCase;
-import com.miloszsosnowski.helpfinder.task.domain.Task;
+import com.miloszsosnowski.helpfinder.address.application.port.AddressUseCase;
+import com.miloszsosnowski.helpfinder.address.domain.Address;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RequestMapping("/task")
 @RestController
+@RequestMapping("/address")
 @AllArgsConstructor
-public class TaskController {
+public class AddressController {
 
-    private final TaskUseCase service;
+    AddressUseCase service;
 
-    @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Task> getAll() {
+    @GetMapping
+    public List<Address> getAll() {
         return service.findAll();
     }
 }
