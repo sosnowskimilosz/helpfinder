@@ -1,4 +1,4 @@
-package com.miloszsosnowski.helpfinder.address.domain;
+package com.miloszsosnowski.helpfinder.user.domain;
 
 import java.util.List;
 import java.util.Optional;

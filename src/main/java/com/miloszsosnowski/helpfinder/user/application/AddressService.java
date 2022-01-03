@@ -1,8 +1,8 @@
-package com.miloszsosnowski.helpfinder.address.application;
+package com.miloszsosnowski.helpfinder.user.application;
 
-import com.miloszsosnowski.helpfinder.address.application.port.AddressUseCase;
-import com.miloszsosnowski.helpfinder.address.domain.Address;
-import com.miloszsosnowski.helpfinder.address.infrastructure.MemoryAddressRepository;
+import com.miloszsosnowski.helpfinder.user.application.port.AddressUseCase;
+import com.miloszsosnowski.helpfinder.user.domain.Address;
+import com.miloszsosnowski.helpfinder.user.infrastructure.MemoryAddressRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

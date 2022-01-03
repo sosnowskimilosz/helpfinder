@@ -1,7 +1,7 @@
-package com.miloszsosnowski.helpfinder.address.web;
+package com.miloszsosnowski.helpfinder.user.web;
 
-import com.miloszsosnowski.helpfinder.address.application.port.AddressUseCase;
-import com.miloszsosnowski.helpfinder.address.domain.Address;
+import com.miloszsosnowski.helpfinder.user.application.port.AddressUseCase;
+import com.miloszsosnowski.helpfinder.user.domain.Address;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;

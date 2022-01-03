@@ -1,7 +1,6 @@
-package com.miloszsosnowski.helpfinder.address.application.port;
+package com.miloszsosnowski.helpfinder.user.application.port;
 
-import com.miloszsosnowski.helpfinder.address.domain.Address;
-import com.miloszsosnowski.helpfinder.task.application.port.TaskUseCase;
+import com.miloszsosnowski.helpfinder.user.domain.Address;
 import lombok.Builder;
 import lombok.Value;
 

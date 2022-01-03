@@ -1,7 +1,7 @@
 package com.miloszsosnowski.helpfinder.user.web;
 
 import com.miloszsosnowski.helpfinder.user.application.port.UserUseCase;
-import com.miloszsosnowski.helpfinder.user.domain.User;
+import com.miloszsosnowski.helpfinder.user.domain.UserEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +19,7 @@ public class UserController {
 
     @ResponseStatus
     @GetMapping
-    public List<User> getAll() {
+    public List<UserEntity> getAll() {
         return service.findAll();
     }
 

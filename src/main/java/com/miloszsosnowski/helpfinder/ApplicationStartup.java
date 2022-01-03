@@ -1,13 +1,13 @@
 package com.miloszsosnowski.helpfinder;
 
-import com.miloszsosnowski.helpfinder.address.application.port.AddressUseCase;
-import com.miloszsosnowski.helpfinder.address.application.port.AddressUseCase.CreateAddressCommand;
+import com.miloszsosnowski.helpfinder.user.application.port.AddressUseCase;
+import com.miloszsosnowski.helpfinder.user.application.port.AddressUseCase.CreateAddressCommand;
 import com.miloszsosnowski.helpfinder.task.application.port.TaskUseCase;
-import com.miloszsosnowski.helpfinder.address.domain.Address;
+import com.miloszsosnowski.helpfinder.user.domain.Address;
 import com.miloszsosnowski.helpfinder.task.domain.Task;
 import com.miloszsosnowski.helpfinder.user.application.port.UserUseCase;
 import com.miloszsosnowski.helpfinder.user.application.port.UserUseCase.CreateUserCommand;
-import com.miloszsosnowski.helpfinder.user.domain.User;
+import com.miloszsosnowski.helpfinder.user.domain.UserEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -68,7 +68,7 @@ public class ApplicationStartup implements CommandLineRunner {
 
     private void findAllUsersFromMemory() {
         System.out.println("----- Find all users -----");
-        List<User> usersInMemory = userService.findAll();
+        List<UserEntity> usersInMemory = userService.findAll();
         usersInMemory.forEach(System.out::println);
     }
 

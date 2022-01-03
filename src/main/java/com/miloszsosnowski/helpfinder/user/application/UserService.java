@@ -1,8 +1,8 @@
 package com.miloszsosnowski.helpfinder.user.application;
 
 import com.miloszsosnowski.helpfinder.user.application.port.UserUseCase;
-import com.miloszsosnowski.helpfinder.user.domain.User;
-import com.miloszsosnowski.helpfinder.user.infrastructure.MemoryUserRepository;
+import com.miloszsosnowski.helpfinder.user.domain.UserEntity;
+import com.miloszsosnowski.helpfinder.user.infrastructure.MemoryUserEntityRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,15 +14,15 @@ import java.util.Optional;
 @AllArgsConstructor
 public class UserService implements UserUseCase {
 
-    MemoryUserRepository repository;
+    MemoryUserEntityRepository repository;
 
     @Override
-    public List<User> findAll() {
+    public List<UserEntity> findAll() {
         return repository.findAll();
     }
 
     @Override
-    public Optional<User> findById(Long id) {
+    public Optional<UserEntity> findById(Long id) {
         return repository.findById(id);
     }
 
@@ -35,8 +35,8 @@ public class UserService implements UserUseCase {
     public UpdateUserResponse updateUser(UpdateUserCommand command) {
         return repository.findById(command.getId())
                 .map(user -> {
-                    User updatedUser = command.updateUser(user);
-                    repository.save(updatedUser);
+                    UserEntity updatedUserEntity = command.updateUser(user);
+                    repository.save(updatedUserEntity);
                     return UpdateUserResponse.SUCCESS;
                 }).orElseGet(() -> new UpdateUserResponse(false, Collections.singletonList("User with id: " + command.getId() + "does not exist!")));
     }

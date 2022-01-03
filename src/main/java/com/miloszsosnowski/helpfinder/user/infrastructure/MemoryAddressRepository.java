@@ -1,7 +1,7 @@
-package com.miloszsosnowski.helpfinder.address.infrastructure;
+package com.miloszsosnowski.helpfinder.user.infrastructure;
 
-import com.miloszsosnowski.helpfinder.address.domain.Address;
-import com.miloszsosnowski.helpfinder.address.domain.AddressRepository;
+import com.miloszsosnowski.helpfinder.user.domain.Address;
+import com.miloszsosnowski.helpfinder.user.domain.AddressRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;

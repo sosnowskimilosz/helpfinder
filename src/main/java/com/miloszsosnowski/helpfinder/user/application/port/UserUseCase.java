@@ -1,6 +1,6 @@
 package com.miloszsosnowski.helpfinder.user.application.port;
 
-import com.miloszsosnowski.helpfinder.user.domain.User;
+import com.miloszsosnowski.helpfinder.user.domain.UserEntity;
 import lombok.Value;
 
 import java.util.List;
@@ -10,9 +10,9 @@ import static java.util.Collections.emptyList;
 
 public interface UserUseCase {
 
-    List<User> findAll();
+    List<UserEntity> findAll();
 
-    Optional<User> findById(Long id);
+    Optional<UserEntity> findById(Long id);
 
     void addUser(CreateUserCommand command);
 
@@ -27,8 +27,8 @@ public interface UserUseCase {
         Long addressId;
         String phoneNumber;
 
-        public User toUser() {
-            return new User(email, password, addressId, phoneNumber);
+        public UserEntity toUser() {
+            return new UserEntity(email, password, addressId, phoneNumber);
         }
     }
 
@@ -40,20 +40,20 @@ public interface UserUseCase {
         Long addressId;
         String phoneNumber;
 
-        public User updateUser(User user) {
+        public UserEntity updateUser(UserEntity userEntity) {
             if (email != null) {
-                user.setEmail(email);
+                userEntity.setEmail(email);
             }
             if (password != null) {
-                user.setPassword(password);
+                userEntity.setPassword(password);
             }
             if (addressId != null) {
-                user.setAddressId(addressId);
+                userEntity.setAddressId(addressId);
             }
             if (phoneNumber != null) {
-                user.setPhoneNumber(phoneNumber);
+                userEntity.setPhoneNumber(phoneNumber);
             }
-            return user;
+            return userEntity;
         }
     }
 

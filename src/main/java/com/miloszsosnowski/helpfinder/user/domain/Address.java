@@ -1,4 +1,4 @@
-package com.miloszsosnowski.helpfinder.address.domain;
+package com.miloszsosnowski.helpfinder.user.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
